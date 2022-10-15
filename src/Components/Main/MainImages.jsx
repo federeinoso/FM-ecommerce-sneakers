@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import img1 from "@/assets/images/image-product-1.jpg";
-import img2 from "@/assets/images/image-product-2.jpg";
-import img3 from "@/assets/images/image-product-3.jpg";
-import img4 from "@/assets/images/image-product-4.jpg";
-import imgThumb1 from "@/assets/images/image-product-1-thumbnail.jpg";
-import imgThumb2 from "@/assets/images/image-product-2-thumbnail.jpg";
-import imgThumb3 from "@/assets/images/image-product-3-thumbnail.jpg";
-import imgThumb4 from "@/assets/images/image-product-4-thumbnail.jpg";
 import ImageThumbnail from "./ImageThumbnail";
 
 import PrevIcon from "@/Components/icons/PrevIcon.jsx";
 import NextIcon from "@/Components/icons/NextIcon.jsx";
+import CloseIcon from "@/Components/icons/CloseIcon.jsx";
 
-const ARRAY_IMG = [img1, img2, img3, img4];
-
-const MainImages = () => {
+const MainImages = ({
+  ARRAY_IMG = [],
+  ARRAY_IMG_THUMB = [],
+  isOpenModal = false,
+  handleClickModal = null,
+  ...props
+}) => {
   const [index, setIndex] = useState(0);
+  const sliderBtn = useRef(null);
+
+  useEffect(() => {
+    if (isOpenModal) {
+      return sliderBtn.current.classList.remove("md:hidden");
+    }
+  }, [isOpenModal]);
 
   const handleClickPrev = () => {
     if (index === 0) {
@@ -31,14 +35,27 @@ const MainImages = () => {
     setIndex(index + 1);
   };
   return (
-    <section className="grid grid-cols-1 md:grid-cols-4 md:gap-6 md:max-w-[500px]">
+    <section {...props}>
+      {isOpenModal && (
+        <button
+          className="md:col-span-4 justify-self-end"
+          onClick={handleClickModal}
+        >
+          <CloseIcon fill={"#fff"} />
+        </button>
+      )}
+
       <div className="col-start-1 col-end-5 relative w-full ">
         <img
           src={ARRAY_IMG[index]}
           alt=""
           className=" md:rounded-2xl object-cover max-h-[50vh] w-screen md:w-full md:max-h-[500px] md:max-w-[500px]"
+          onClick={handleClickModal}
         />
-        <div className="absolute md:hidden top-1/2 left-0 -translate-y-1/2 flex justify-between w-full px-3">
+        <div
+          ref={sliderBtn}
+          className="absolute md:hidden top-1/2 left-0 -translate-y-1/2 flex justify-between w-full px-3"
+        >
           <button
             className=" bg-white w-10 h-10 rounded-full grid place-items-center"
             onClick={handleClickPrev}
@@ -53,10 +70,16 @@ const MainImages = () => {
           </button>
         </div>
       </div>
-      <ImageThumbnail name={imgThumb1} />
-      <ImageThumbnail name={imgThumb2} />
-      <ImageThumbnail name={imgThumb3} />
-      <ImageThumbnail name={imgThumb4} />
+      {ARRAY_IMG_THUMB.map((images, i) => (
+        <div
+          onClick={() => {
+            setIndex(i);
+          }}
+          key={images}
+        >
+          <ImageThumbnail name={images} index={index} i={i} />
+        </div>
+      ))}
     </section>
   );
 };

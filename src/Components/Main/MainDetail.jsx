@@ -30,15 +30,15 @@ const MainDetail = () => {
       </p>
       <div className="flex content-center items-center justify-between mb-8 md:flex-col md:items-start">
         <div>
-          <span className="font-bold text-2xl mr-4">$125.00</span>
+          <span className="font-bold text-2xl mr-3">$125.00</span>
           <span className="bg-pale-orange px-3 rounded-md font-bold text-orange-primary">
             50%
           </span>
         </div>
         <span className="font-bold text-gray-300 line-through">$250.00</span>
       </div>
-      <div>
-        <div className="bg-gray-100 mb-3 rounded-md flex justify-between items-center px-6 font-bold h-12">
+      <div className="md:flex">
+        <div className="bg-gray-100 mb-3 md:w-2/4 rounded-md flex justify-between items-center px-6 md:mr-4 font-bold h-12">
           <button onClick={handleMinusProduct}>
             <MinusIcon />
           </button>
@@ -47,7 +47,7 @@ const MainDetail = () => {
             <PlusIcon />
           </button>
         </div>
-        <button className="flex place-content-center items-center bg-orange-primary w-full h-12 font-bold px-2 rounded-md text-white hover:bg-pale-orange">
+        <button className="flex place-content-center items-center bg-orange-primary w-full h-12 font-bold px-2 rounded-md text-white hover:bg-orange-300 transition-all">
           <CartIcon className="fill-white" />
           <span className="ml-2">Add to card</span>
         </button>

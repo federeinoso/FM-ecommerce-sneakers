@@ -13,11 +13,26 @@ import imgThumb4 from "@/assets/images/image-product-4-thumbnail.jpg";
 const ARRAY_IMG = [img1, img2, img3, img4];
 const ARRAY_IMG_THUMB = [imgThumb1, imgThumb2, imgThumb3, imgThumb4];
 
+const objectProduct = {
+  id: 1,
+  title: "Fall Limited Edition Sneakers",
+  description:
+    "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.",
+  subtitle: "Sneaker Company",
+  price: 250.0,
+  discount: 0.5,
+  imagesMain: ARRAY_IMG,
+  imagesThumb: ARRAY_IMG_THUMB,
+};
+
 const Main = () => {
   return (
-    <main className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-4 md:place-items-center md:mx-auto items-center md:container md:px-[6.4vw] md:py-10 ">
-      <HandleImages ARRAY_IMG={ARRAY_IMG} ARRAY_IMG_THUMB={ARRAY_IMG_THUMB} />
-      <MainDetail />
+    <main className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-4 md:pb-0 md:place-items-center md:mx-auto items-center md:container md:px-[6.4vw] md:h-[calc(100%-89px)]">
+      <HandleImages
+        ARRAY_IMG={objectProduct.imagesMain}
+        ARRAY_IMG_THUMB={objectProduct.imagesThumb}
+      />
+      <MainDetail objectProduct={objectProduct} />
     </main>
   );
 };

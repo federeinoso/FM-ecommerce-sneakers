@@ -45,7 +45,7 @@ const MainImages = ({
         </button>
       )}
 
-      <div className="col-start-1 col-end-5 relative w-full ">
+      <div className="col-start-1 col-end-5 relative w-full">
         <img
           src={ARRAY_IMG[index]}
           alt=""
@@ -57,13 +57,13 @@ const MainImages = ({
           className="absolute md:hidden top-1/2 left-0 -translate-y-1/2 flex justify-between w-full px-3"
         >
           <button
-            className=" bg-white w-10 h-10 rounded-full grid place-items-center"
+            className=" bg-white w-10 h-10 rounded-full flex justify-center items-center"
             onClick={handleClickPrev}
           >
             <PrevIcon />
           </button>
           <button
-            className=" bg-white w-10 h-10 rounded-full grid place-items-center"
+            className=" bg-white w-10 h-10 rounded-full flex justify-center items-center"
             onClick={handleClickNext}
           >
             <NextIcon />

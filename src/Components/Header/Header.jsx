@@ -60,7 +60,7 @@ const Header = () => {
           <img
             src={Avatar}
             alt=""
-            className="w-10 backdrop-grayscale hover:border-orange-primary hover:rounded-[50%] hover:border-2"
+            className="w-10 h-10 backdrop-grayscale hover:border-orange-primary hover:rounded-[50%] hover:border-2"
           />
           {openCart && <Cart />}
         </div>

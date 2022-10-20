@@ -27,7 +27,7 @@ const objectProduct = {
 
 const Main = () => {
   return (
-    <main className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-4 md:pb-0 md:place-items-center md:mx-auto items-center md:container md:px-[6.4vw] md:h-[calc(100%-89px)]">
+    <main className="grid grid-cols-1 md:grid-cols-2 gap-8 md:py-10 pb-4 md:pb-0 md:place-items-center md:mx-auto items-center md:container md:px-[6.4vw] md:h-[calc(100%-89px)]">
       <HandleImages
         ARRAY_IMG={objectProduct.imagesMain}
         ARRAY_IMG_THUMB={objectProduct.imagesThumb}
